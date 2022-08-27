@@ -1,35 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import {
-  Box,
-  Grid,
-  MenuItem,
-  Paper,
-  TextField,
-  Typography,
-  styled,
-} from "@mui/material";
+import { Grid, MenuItem, Paper, TextField } from "@mui/material";
 import { cities, myWeather } from "./Objects";
+import WeatherInfo from "./WeatherInfo";
 
 function App() {
-  const [weatherInfo, setWeatherInfo] = useState<myWeather>();
+  const [weatherData, setWeatherData] = useState<myWeather>();
   const [location, setLocation] = useState<string>(cities[1].label);
   const [reload, setReload] = useState<boolean>(false);
   const URL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=4f614993e61b575abedbf67c0b5a4514`;
 
-  //Since the API doesn't return Celcius I have to convert from Kelvin
-  //(( kelvinValue - 273.15) * 9/5) + 32
-
-  const Item = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body2,
-    textAlign: "center",
-    backgroundColor: "#b20000", //    backgroundColor: cities.location.color,
-    color: theme.palette.text.secondary,
-    width: 100,
-    height: 100,
-    fontSize: "16px",
-    lineHeight: "100px",
-  }));
+  // Since the API doesn't return Celcius I have to convert from Kelvin like this kelvinValue - 273.15
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setReload(!reload);
@@ -39,11 +20,13 @@ function App() {
   useEffect(() => {
     fetch(URL)
       .then((response) => response.json())
-      .then((data) => setWeatherInfo(data))
+      .then((data) => setWeatherData(data))
       .catch((err) => console.error(err));
   }, [reload]);
 
-  console.log(weatherInfo);
+  const checkTemp = Number(
+    weatherData?.main?.temp ? weatherData?.main.temp_max - 273.15 : null
+  ).toFixed(0);
 
   return (
     <Grid
@@ -52,14 +35,15 @@ function App() {
       alignItems="center"
       direction={{ xs: "row", sm: "column" }}
       p={2}
-      className="App"
     >
       <Paper
         elevation={1}
         sx={{
           backgroundColor: "#FF4C4C",
-          maxWidth: "600px",
+          width: "500px",
+          height: "800px",
         }}
+        className={parseFloat(checkTemp) > 16 ? "app warm" : "app"}
       >
         <Grid
           container
@@ -74,6 +58,7 @@ function App() {
               value={location}
               onChange={handleChange}
               helperText="Please select a city"
+              className="color"
             >
               {cities.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
@@ -82,30 +67,7 @@ function App() {
               ))}
             </TextField>
           </Grid>
-          <Grid container item justifyContent="center" alignItems="center">
-            <Typography variant="h1">{weatherInfo?.main.temp}</Typography>
-            <Typography className="secondaryTitle" variant="h3">
-              {weatherInfo?.weather[0].description}
-            </Typography>
-          </Grid>
-          <Grid container item justifyContent="center">
-            <Box
-              sx={{
-                p: 2,
-                display: "flex",
-                gap: 2,
-              }}
-            >
-              <Item elevation={3}>
-                {`Feels ${weatherInfo?.main.feels_like}`}
-              </Item>
-              <Item elevation={3}>
-                {`Humidity ${weatherInfo?.main.humidity}`}
-              </Item>
-              <Item elevation={3}>{`Max ${weatherInfo?.main.temp_max}`}</Item>
-              <Item elevation={3}>{`Min ${weatherInfo?.main.temp_min}`}</Item>
-            </Box>
-          </Grid>
+          <WeatherInfo dataObject={weatherData} />
         </Grid>
       </Paper>
     </Grid>

@@ -13,7 +13,7 @@ export interface myWeather {
   ];
   base: string;
   main: {
-    temp: number;
+    temp?: number;
     feels_like: number;
     temp_min: number;
     temp_max: number;

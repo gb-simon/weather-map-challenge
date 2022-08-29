@@ -12,8 +12,9 @@ interface WeatherInfoProps {
 }
 
 const WeatherInfo = (props: WeatherInfoProps): JSX.Element => {
-  const { dataObject } = props;
+  // Since the API doesn't return Celcius values I have to convert from Kelvin subtracting 273.15
 
+  const { dataObject } = props;
   const dateformat = {
     month: "short",
     day: "2-digit",

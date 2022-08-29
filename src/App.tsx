@@ -27,7 +27,7 @@ function App() {
       container
       alignItems="flex-start"
       justifyContent="center"
-      className={parseFloat(checkTemp) > 19 ? "app warm" : "app"}
+      className={parseFloat(checkTemp) > 15 ? "app warm" : "app"}
     >
       <Grid container item alignItems="flex-start" justifyContent="center">
         <CitySelector

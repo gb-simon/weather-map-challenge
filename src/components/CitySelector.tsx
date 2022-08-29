@@ -1,6 +1,6 @@
 import React from "react";
 import "./../App.css";
-import { MenuItem, TextField } from "@mui/material";
+import { MenuItem, Select } from "@mui/material";
 import { cities } from "./Objects";
 
 interface WeatherInfoProps {
@@ -12,28 +12,35 @@ interface WeatherInfoProps {
 
 const CitySelector = (props: WeatherInfoProps): JSX.Element => {
   const { reload, setReload, location, setLocation } = props;
-  // Since the API doesn't return Celcius I have to convert from Kelvin like this kelvinValue - 273.15
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleChange = (value: string): void => {
     setReload(!reload);
-    setLocation(event.target.value);
+    setLocation(value);
   };
+
   return (
-    <TextField
-      select
+    <Select
       label="City"
+      id="select"
+      disableUnderline
+      data-testid="city"
+      labelId="city"
       variant="filled"
+      displayEmpty
       value={location}
-      onChange={handleChange}
-      helperText="Please select a city"
+      onChange={({ target: { value } }) => handleChange(value)}
       className="selector"
     >
       {cities.map((option) => (
-        <MenuItem key={option.value} value={option.value}>
+        <MenuItem
+          data-testid="cityitems"
+          key={option.value}
+          value={option.value}
+        >
           {option.label}
         </MenuItem>
       ))}
-    </TextField>
+    </Select>
   );
 };
 

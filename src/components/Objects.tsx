@@ -45,23 +45,23 @@ export interface myWeather {
 
 export const cities = [
   {
-    value: "cordoba",
+    value: "Cordoba",
     label: "Córdoba",
-    color: "gray",
   },
   {
     value: "Paris",
     label: "Paris",
-    color: "green",
   },
   {
     value: "Quebec",
-    label: "Quebec",
-    color: "blue",
+    label: "Québec",
   },
   {
     value: "Buenos Aires",
     label: "Buenos Aires",
-    color: "red",
+  },
+  {
+    value: "Beijing",
+    label: "Beijing",
   },
 ];

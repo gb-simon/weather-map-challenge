@@ -62,7 +62,7 @@ const WeatherInfo = (props: WeatherInfoProps): JSX.Element => {
           <strong className="temp">
             {`${Number(
               dataObject?.main?.temp ? dataObject?.main?.temp - 273.15 : null
-            ).toFixed(0)}°`}
+            ).toFixed(0)}°C`}
           </strong>
         </Grid>
         <Grid item xs={1}>
@@ -93,7 +93,7 @@ const WeatherInfo = (props: WeatherInfoProps): JSX.Element => {
             <AddCircleOutlineIcon fontSize="large" />
             <Typography variant="body1">{`Max ${Number(
               dataObject?.main?.temp ? dataObject?.main.temp_max - 273.15 : null
-            ).toFixed(0)} °`}</Typography>
+            ).toFixed(0)}°C`}</Typography>
           </Item>
           <Item>
             <RemoveCircleOutlineIcon fontSize="large" />
@@ -102,13 +102,13 @@ const WeatherInfo = (props: WeatherInfoProps): JSX.Element => {
                 dataObject?.main?.temp
                   ? dataObject?.main.temp_min - 273.15
                   : null
-              ).toFixed(0)}°`}
+              ).toFixed(0)}°C`}
             </Typography>
           </Item>
           <Item>
             <WindPowerIcon fontSize="large" />
             <Typography variant="body1">
-              {`Wind ${dataObject?.wind.speed}`}
+              {`Wind ${dataObject?.wind.speed}m/s`}
             </Typography>
           </Item>
         </Grid>

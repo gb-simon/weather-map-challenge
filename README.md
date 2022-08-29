@@ -15,13 +15,13 @@ I made this app with React, used the template TypeScript, and for the styles I u
 I wanted to create a minimalist app, I thought about what I want every time I use a weather app in my daily life, well I just see the temp weather, and maybe some days I check the minimum and the maximum if I'll spend the day off home. So I thought I’d just show the most necessary points for the user to have a better experience.
 
 This is what it looks like in the last version
-![bigscreen](https://i.imgur.com/rqQkGHe.png)
+![bigscreen](https://i.imgur.com/FePPCqO.png)
 
 As you can see, there are just three components, the selector, the weather info, and the weather description at the left. It works on every screen, no matter the size, this first picture was taken on a screen 3286x1080. This is how it looks on a 1366 \* 768 screen
-![normalscreen](https://i.imgur.com/RWbizab.png)
+![normalscreen](https://i.imgur.com/D9H06xH.png)
 
 And the responsive site:
-![responsivescreen](https://i.imgur.com/w7v4A2C.png)
+![responsivescreen](https://i.imgur.com/Sb6Da20.png)
 
 To manage the versions I used git, with Github. The data was taken from the API of [Open Weather Map](https://openweathermap.org/). For testing the app I used the testing react library/jest, written wth typescript, I tested the app, making the focus on the most important function which is to show the city and the city info.
 

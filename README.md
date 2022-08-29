@@ -1,46 +1,43 @@
-# Getting Started with Create React App
+# Weather Map Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Live Demo](www.gonzaloweather.netlify.com)
 
-## Available Scripts
+I used **yarn** to manage the packages
 
-In the project directory, you can run:
+`yarn install` to add the necessary dependencies
 
-### `npm start`
+`yarn test` to run the app test cases
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+`yarn start` to run the app
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+I made this app with React, used the template TypeScript, and for the styles I used Material UI. The app is made of three components, the city selector at the top of the screen, and below the user can see the other two, one next to the other, the weather information, and the weather description.
 
-### `npm test`
+I wanted to create a minimalist app, I thought about what I want every time I use a weather app in my daily life, well I just see the temp weather, and maybe some days I check the minimum and the maximum if I'll spend the day off home. So I thought I’d just show the most necessary points for the user to have a better experience.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This is what it looks like in the last version
+![bigscreen](https://i.imgur.com/rqQkGHe.png)
 
-### `npm run build`
+As you can see, there are just three components, the selector, the weather info, and the weather description at the left. It works on every screen, no matter the size, this first picture was taken on a screen 3286x1080. This is how it looks on a 1366 \* 768 screen
+![normalscreen](https://i.imgur.com/RWbizab.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+And the responsive site:
+![responsivescreen](https://i.imgur.com/w7v4A2C.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To manage the versions I used git, with Github. For testing the app I used the testing react library, written wth typescript, I tested the app, making the focus on the most important function which is to show the city and the city info.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```tsx
+test("the selector renders the city the user picked", async () => {
+  render(<App />);
+  await UserEvent.click(getByRole(screen.getByTestId("city"), "button"));
+  waitFor(() => UserEvent.click(screen.getByText("Paris")));
+  expect(screen.getByText("Paris"));
+});
+```
 
-### `npm run eject`
+And here you can see all the tests passed!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![testcases](https://i.imgur.com/GMqTr74.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+I build the app on Netlify, this is a site I used for deploying also my other projects, which you can check on my website!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Here is the link to the app running](www.gonzaloweather.netlify.com)

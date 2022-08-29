@@ -1,25 +1,45 @@
 .app {
-  background-image: url("./assets/warm-bg.jpg");
+  background-image: url("./assets/cold-bg.jpg");
   background-size: cover;
   background-position: bottom;
   transition: 0.4 ease;
+  width: 100vw;
+  min-height: 100vh;
 }
 
 .app.warm {
-  background-image: url("./assets/cold-bg.jpg");
+  background-image: url("./assets/warm-bg.jpg");
 }
 
 .color {
   color: #fff;
 }
 
+.selector {
+  width: 50%;
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 0px 0px 16px 16px;
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  transition: 0.4s ease;
+}
+
+@media (min-width: 700px) {
+  .selector {
+    width: 25%;
+  }
+}
+
 .temp {
   position: relative;
   display: inline-block;
-  margin: 30px auto;
   background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  padding: 15px 25px;
+  border-radius: 5px;
+  padding: 15px;
   color: #fff;
   font-size: 102px;
   font-weight: 900;
@@ -29,14 +49,33 @@
 }
 
 .info {
-  position: relative;
-  display: inline-block;
-  margin: 30px auto;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  padding: 15px 25px;
-  color: #fff;
-  font-size: 102px;
   font-weight: 900;
   text-align: center;
+}
+
+.locationTitle {
+  display: block;
+  font-size: 32px;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+}
+
+.dateTitle {
+  display: block;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+}
+
+.descriptions {
+  color: #fff;
+  font-size: 48px;
+  font-weight: 700;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
 }

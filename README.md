@@ -23,7 +23,7 @@ As you can see, there are just three components, the selector, the weather info,
 And the responsive site:
 ![responsivescreen](https://i.imgur.com/w7v4A2C.png)
 
-To manage the versions I used git, with Github. For testing the app I used the testing react library, written wth typescript, I tested the app, making the focus on the most important function which is to show the city and the city info.
+To manage the versions I used git, with Github. The data was taken from the API of [Open Weather Map](https://openweathermap.org/). For testing the app I used the testing react library/jest, written wth typescript, I tested the app, making the focus on the most important function which is to show the city and the city info.
 
 ```tsx
 test("the selector renders the city the user picked", async () => {
